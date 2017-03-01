@@ -290,8 +290,12 @@ var Autocomplete = React.createClass({
       top: this.state.menuTop,
       minWidth: this.state.menuWidth
     };
-    var menu = this.props.renderMenu(items, this.props.value, style);
-    return React.cloneElement(menu, { ref: 'menu' });
+    var menu = this.props.renderMenu(items, this.props.value, style)
+    return React.cloneElement(menu, {
+      ref: 'menu',
+      onMouseEnter: function (){ _this4.setIgnoreBlur(true) },
+      onMouseLeave: function (){ _this4.setIgnoreBlur(false) }
+    })
   },
 
   handleInputBlur: function handleInputBlur() {
